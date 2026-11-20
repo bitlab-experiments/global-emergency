@@ -1,0 +1,1597 @@
+# National CAP feeds from docs/sources (WMO CAP sources list).
+# One enabled cap-atom row per country/agency entry (English URL preferred).
+# Non-CAP aggregators remain at the bottom, disabled until adapters exist.
+#
+# Count: 151 national feeds
+
+# Afghanistan: National Disaster Management Authority — Region II - Asia (To be updated)
+- key: af-andma-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/af-andma-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Albania: Institute of GeoSciences, Energy, Water and Environment — Region VI - Europe
+- key: al-igewe-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/al-igewe-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Algeria: Office National de la Météorologie — Region I - Africa
+- key: dz-ametvigilance-meteo
+  type: cap-atom
+  url: https://ametvigilance.meteo.dz/rss/rss_meteo_dz.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Andorra: Servei Meteorològic d'Andorra — Region VI - Europe
+- key: meteoalarm-andorra
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-andorra
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: ca
+  enabled: true
+
+# Angola: National Institute of Hydrometeorology and Geophysics — Region I - Africa (To be updated)
+- key: ao-inamet-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/ao-inamet-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Anguilla: Disaster Management Anguilla — Region IV - North America, Central America and the Caribbean
+- key: ai-axa-primary-capews
+  type: cap-atom
+  url: https://axa-primary.capews.com/capews/public/atom?type=cap
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Antigua and Barbuda: Antigua and Barbuda Meteorological Service — Region IV - North America, Central America and the Caribbean
+- key: ag-atg-primary-capews
+  type: cap-atom
+  url: https://atg-primary.capews.com/capews/public/atom?type=cap
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Argentina: Servicio Meteorologico Nacional — Region III - South America
+- key: ar-ssl-smn-gob
+  type: cap-atom
+  url: https://ssl.smn.gob.ar/CAP/AR.php
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: ar
+  enabled: true
+
+# Australia: Bureau of Meteorology — Region V - South West Pacific
+- key: au-bom
+  type: cap-atom
+  url: https://severeweather.wmo.int/v2/cap-alerts/au-bom-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Austria: Zentralanstalt für Meteorologie und Geodynamik — Region VI - Europe
+- key: meteoalarm-austria
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-austria
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: de
+  enabled: true
+
+# Bahrain: Meteorological Directorate — Region II - Asia
+- key: bh-meteo-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/bh-meteo-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Barbados: Department of Emergency Management — Region IV - North America, Central America and the Caribbean
+- key: bb-brb-primary-capews
+  type: cap-atom
+  url: https://brb-primary.capews.com/capews/public/atom?type=cap
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Belarus: State institution 'Republican center for hydrometeorology, control of radioactive contamination and environmental monitoring' — Region VI - Europe
+- key: by-meteoalert-meteoinfo
+  type: cap-atom
+  url: https://meteoalert.meteoinfo.ru/belarus/cap-feed/en/atom.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Belgium: Royal Meteorological Institute — Region VI - Europe (To be updated)
+- key: meteoalarm-belgium
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-belgium
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: nl
+  enabled: true
+
+# Belize: National Meteorology Service — Region IV - North America, Central America and the Caribbean
+- key: bz-nms-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/bz-nms-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Benin: Agence Nationale de la Meteorologie (METEO-BENIN) — Region I - Africa
+- key: bj-meteobenin
+  type: cap-atom
+  url: https://www.meteobenin.bj/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Bosnia and Herzegovina: Federalni hidrometeorološki zavod BiH — Region VI - Europe
+- key: meteoalarm-bosnia-herzegovina
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-bosnia-herzegovina
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: bs
+  enabled: true
+
+# Botswana: Department of Meteorological Services — Region I - Africa
+- key: bw-met-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/bw-met-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Brazil: Instituto Nacional de Meteorologia - INMET — Region III - South America
+- key: br-inmet
+  type: cap-atom
+  url: https://apiprevmet3.inmet.gov.br/avisos/rss
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: pt
+  enabled: true
+
+# British Virgin Islands: Department of Disaster Management — Region IV - North America, Central America and the Caribbean
+- key: uk-bviddm-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/uk-bviddm-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: uk
+  enabled: true
+
+# Bulgaria: НАЦИОНАЛЕН ИНСТИТУТ ПО МЕТЕОРОЛОГИЯ И ХИДРОЛОГИЯ - ФИЛИАЛ ПЛОВДИВ — Region VI - Europe (To be updated)
+- key: meteoalarm-bulgaria
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-bulgaria
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: bg
+  enabled: true
+
+# Burkina Faso: Agence Nationale de la Météorologie du Burkina Faso — Region I - Africa
+- key: bf-meteoburkina
+  type: cap-atom
+  url: https://www.meteoburkina.bf/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Burundi: Institut Géographique du Burundi (IGEBU) — Region I - Africa
+- key: bi-igebu
+  type: cap-atom
+  url: https://www.igebu.bi/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Cameroon: Directorate of National Meteorology — Region I - Africa
+- key: cm-meteo-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/cm-meteo-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Canada: Alberta Emergency Management Agency (Government of Alberta, Ministry of Municipal Affairs) — Region IV - North America, Central America and the Caribbean
+- key: ca-naad
+  type: cap-atom
+  url: https://rss.naad-adna.pelmorex.com/
+  intervalSec: 60
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Central African Republic: Direction de la Météorologie Nationale — Region I - Africa
+- key: cf-dmn-fr
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/cf-dmn-fr/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Chad: Agence Nationale de la Météorologie — Region I - Africa
+- key: td-meteotchad
+  type: cap-atom
+  url: https://www.meteotchad.org/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Chile: Dirección Meteorológica de Chile — Region III - South America
+- key: cl-archivos-meteochile-gob
+  type: cap-atom
+  url: https://archivos.meteochile.gob.cl/portaldmc/rss/rss.php
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: es
+  enabled: true
+
+# China: China Meteorological Administration — Region II - Asia
+- key: cn-severeweather-wmo
+  type: cap-atom
+  url: https://severeweather.wmo.int/v2/cap-alerts/cn-cma-xx/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Colombia: Instituto de Hidrología, Meteorología y Estudios Ambientales — Region III - South America
+- key: co-alertascap-ideam-gov
+  type: cap-atom
+  url: https://alertascap.ideam.gov.co/ospa/xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: es
+  enabled: true
+
+# Comoros: Direction de la Météorologie Nationale — Region I - Africa
+- key: km-meteocomores
+  type: cap-atom
+  url: https://meteocomores.km/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Congo: Direction de la Météorologie Nationale — Region I - Africa
+- key: cg-dirmet
+  type: cap-atom
+  url: https://dirmet.cg/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Costa Rica: National Meteorological Institute — Region IV - North America, Central America and the Caribbean
+- key: cr-imn-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/cr-imn-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Côte d'Ivoire: Société d'Exploitation et de Developpement Aéroportuaire, Aéronautique et Météorologique — Region I - Africa
+- key: ci-sodexam-fr
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/ci-sodexam-fr/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Croatia: Državni hidrometeorološki zavod (DHMZ) — Region VI - Europe
+- key: meteoalarm-croatia
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-croatia
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: hr
+  enabled: true
+
+# Curaçao and Sint Maarten: Meteorological Department Curaçao — Region IV - North America, Central America and the Caribbean
+- key: curacao--meteo
+  type: cap-atom
+  url: https://www.meteo.cw/rss/CAP_en.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Cyprus: Meteorological Service — Region VI - Europe
+- key: meteoalarm-cyprus
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-cyprus
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Czechia: Český hydrometeorologický ústav — Region VI - Europe
+- key: meteoalarm-czechia
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-czechia
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: cs
+  enabled: true
+
+# Democratic Republic of the Congo: Agence Nationale de la Météorologie et de Télédétection par Satellite — Region I - Africa
+- key: cd-meteordcongo
+  type: cap-atom
+  url: https://meteordcongo.cd/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Denmark: Danmarks Meteorologiske Instituts — Region VI - Europe
+- key: meteoalarm-denmark
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-denmark
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Djibouti: Agence Nationale de la Météorologie de Djibouti (ANM) — Region I - Africa
+- key: dj-meteodjibouti
+  type: cap-atom
+  url: https://meteodjibouti.dj/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Dominican Republic: Instituto Dominicano de Meteorología — Region IV - North America, Central America and the Caribbean
+- key: do-indomet-es
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/do-indomet-es/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: es
+  enabled: true
+
+# Ecuador: Instituto Nacional de Meteorología e Hidrología (INAMHI) — Region III - South America
+- key: ec-inamhi-es
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/ec-inamhi-es/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: es
+  enabled: true
+
+# Egypt: Egyptian Meteorological Authority — Region I - Africa
+- key: eg-ema-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/eg-ema-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Estonia: Riigi Ilmateenistus — Region VI - Europe (To be updated)
+- key: meteoalarm-estonia
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-estonia
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: et
+  enabled: true
+
+# Eswatini: Eswatini Meteorological Service — Region I - Africa
+- key: sz-met-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/sz-met-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Ethiopia: Ethiopian Meteorological Institute (EMI) — Region I - Africa
+- key: et-ethiomet-gov
+  type: cap-atom
+  url: https://www.ethiomet.gov.et/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Finland: Finnish Meteorological Institute — Region VI - Europe
+- key: fi-fmi-en
+  type: cap-atom
+  url: https://alerts.fmi.fi/cap/feed/rss_en-GB.rss
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# France: Meteo-France — Region VI - Europe
+- key: meteoalarm-france
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-france
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Gabon: Direction Generale de la Météorologie — Region I - Africa
+- key: ga-dgm-fr
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/ga-dgm-fr/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Gambia (The): Department of Water Resources — Region I - Africa
+- key: gm-meteogambia
+  type: cap-atom
+  url: https://meteogambia.gm/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Germany: German Meteorological Office — Region VI - Europe
+- key: de-dwd-en
+  type: cap-atom
+  url: https://www.dwd.de/DWD/warnungen/cap-feed/en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Ghana: Ghana Meteorological Agency — Region I - Africa
+- key: gh-meteo-gov
+  type: cap-atom
+  url: https://www.meteo.gov.gh/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Greece: ΕΜΥ-Εθνική Μετεωρολογική Υπηρεσία — Region VI - Europe (To be updated)
+- key: meteoalarm-greece
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-greece
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: el
+  enabled: true
+
+# Guinea: Agence Nationale de la Météorologie — Region I - Africa
+- key: gn-anmeteo-gov
+  type: cap-atom
+  url: https://anmeteo.gov.gn/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Guinea-Bissau: Instituto Nacional de Meteorologia da Guine-Bissau — Region I - Africa
+- key: gw-meteoguinebissau
+  type: cap-atom
+  url: https://meteoguinebissau.gw/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: pt
+  enabled: true
+
+# Guyana: Hydrometeorological Service of Guyana — Region III - South America
+- key: gy-hms-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/gy-hms-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Hong Kong, China: Hong Kong Observatory — Region II - Asia
+- key: hk-hko
+  type: cap-atom
+  url: https://alerts.weather.gov.hk/V1/cap_atom.xml
+  intervalSec: 60
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Hungary: Hungarian Meteorological Service — Region VI - Europe (To be updated)
+- key: meteoalarm-hungary
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-hungary
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Iceland: Veðurstofa Íslands — Region VI - Europe
+- key: is-api-vedur
+  type: cap-atom
+  url: https://api.vedur.is/cap/v1/capbroker/active/feed/met
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: is
+  enabled: true
+
+# India: National Disaster Management Authority — Region II - Asia
+- key: in-imd-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/in-imd-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Indonesia: Agency for Meteorology Climatology and Geophysics of Republic Indonesia — Region V - South West Pacific
+- key: id-bmkg-en
+  type: cap-atom
+  url: https://www.bmkg.go.id/alerts/nowcast/en
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Iran (Islamic Republic of): Iran Meteorological Organization — Region II - Asia (To be updated)
+- key: ir-irimo-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/ir-irimo-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Iraq: Iraqi Meteorological Organization and Seismology — Region II - Asia
+- key: iq-imos-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/iq-imos-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Ireland: Met Eireann - Irish Meteorological Service — Region VI - Europe
+- key: ie-met
+  type: cap-atom
+  url: https://www.met.ie/warningsxml/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Israel: Meteorological Service — Region VI - Europe (To be updated)
+- key: meteoalarm-israel
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-israel
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Italy: Centro Nazionale di Meteorologia e Climatologia Aeronautica (CNMCA) — Region VI - Europe
+- key: meteoalarm-italy
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-italy
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: it
+  enabled: true
+
+# Jamaica: Meteorological Service — Region IV - North America, Central America and the Caribbean
+- key: jm-alert-metservice-gov
+  type: cap-atom
+  url: https://alert.metservice.gov.jm/capfeed.php
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Jordan: Jordanian Meteorological Department — Region VI - Europe
+- key: jo-meteo-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/jo-meteo-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Kazakhstan: Kazhydromet — Region II - Asia
+- key: kz-meteoalert-meteoinfo
+  type: cap-atom
+  url: https://meteoalert.meteoinfo.ru/kazakhstan/cap-feed/en/atom.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Kenya: Kenya Meteorological Department — Region I - Africa
+- key: ke-meteo-go
+  type: cap-atom
+  url: https://meteo.go.ke/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Kuwait: Meteorological Department — Region II - Asia
+- key: kw-met-gov
+  type: cap-atom
+  url: https://www.met.gov.kw/rss_eng/kuwait_cap.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Kyrgyzstan: Kyrgyzhydromet — Region II - Asia
+- key: kg-meteoalert-meteoinfo
+  type: cap-atom
+  url: https://meteoalert.meteoinfo.ru/kyrgyzstan/cap-feed/en/atom.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Latvia: Latvijas Vides, ģeoloģijas un meteoroloģijas centrs — Region VI - Europe (To be updated)
+- key: meteoalarm-latvia
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-latvia
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: lv
+  enabled: true
+
+# Lesotho: Lesotho Meteorological Services — Region I - Africa
+- key: ls-lms-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/ls-lms-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Liberia: Liberia Meteorological Service (LMS), Ministry of Transport — Region I - Africa
+- key: lr-meteoliberia
+  type: cap-atom
+  url: https://meteoliberia.com/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Libya (State of): National Meteorological Centre — Region I - Africa
+- key: ly-nmc-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/ly-nmc-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Lithuania: Lithuanian Hydrometeorological Service — Region VI - Europe (To be updated)
+- key: meteoalarm-lithuania
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-lithuania
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Luxembourg: Administration de l'Aéroport de Luxembourg — Region VI - Europe (To be updated)
+- key: meteoalarm-luxembourg
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-luxembourg
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Macao, China: Meteorological and Geophysical Bureau — Region II - Asia (To be updated)
+- key: mo-rss-dsmg-gov
+  type: cap-atom
+  url: https://rss.dsmg.gov.mo/cap_rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Madagascar: Operational Meteorology — Region I - Africa
+- key: mg-meteo-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/mg-meteo-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Malawi: Department of Climate Change and Meteorological Services — Region I - Africa
+- key: mw-metmalawi-gov
+  type: cap-atom
+  url: https://www.metmalawi.gov.mw/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Maldives: Maldives Meteorological Service — Region II - Asia
+- key: mv-cap-meteorology-gov
+  type: cap-atom
+  url: https://cap.meteorology.gov.mv/rss/alerts/
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Mali: Agence Nationale de la Météorologie du Mali (MALI-METEO) — Region I - Africa
+- key: ml-malimeteo
+  type: cap-atom
+  url: https://www.malimeteo.ml/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Malta: Meteorological Office — Region VI - Europe
+- key: meteoalarm-malta
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-malta
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Mauritania: Office National de la Météorologie (ONM) — Region I - Africa
+- key: mr-meteomauritanie
+  type: cap-atom
+  url: https://meteomauritanie.mr/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Mauritius: Mauritius Meteorological Services — Region I - Africa
+- key: mu-mms-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/mu-mms-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Mexico: CONAGUA - Servicio Meteorologico Nacional de Mexico — Region IV - North America, Central America and the Caribbean
+- key: mx-smn-conagua-gob
+  type: cap-atom
+  url: https://smn.conagua.gob.mx/tools/PHP/feedsmn/cap.php
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: es
+  enabled: true
+
+# Mongolia: National Agency for Meteorology and Environmental Monitoring — Region II - Asia (To be updated)
+- key: mn-namem-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/mn-namem-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: mn
+  enabled: true
+
+# Montenegro: Institute of Hydrometeorology and Seismology of Montenegro — Region VI - Europe (To be updated)
+- key: meteoalarm-montenegro
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-montenegro
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Mozambique: Instituto Nacional de Meteorologia — Region I - Africa
+- key: mz-inam-pt
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/mz-inam-pt/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: pt
+  enabled: true
+
+# Myanmar: Department of Meteorology and Hydrology — Region II - Asia (To be updated)
+- key: mm-feeds-dmh-zamg-ac
+  type: cap-atom
+  url: https://feeds-dmh.zamg.ac.at/feeds/dmh-warnings
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Netherlands (Kingdom of the): Royal Netherlands Meteorological Institute — Region VI - Europe
+- key: meteoalarm-netherlands
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-netherlands
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# New Zealand: MetService — Region V - South West Pacific
+- key: nz-metservice
+  type: cap-atom
+  url: https://alerts.metservice.com/cap/rss
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Niger: Direction de la Météorologie Nationale — Region I - Africa
+- key: ne-niger-meteo
+  type: cap-atom
+  url: https://www.niger-meteo.ne/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Nigeria: Nigerian Meteorological Agency — Region I - Africa
+- key: ng-nimet-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/ng-nimet-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Niue: Alerts Niue — Region V - South West Pacific
+- key: nu-gov-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/nu-gov-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# North Macedonia: Republic Hydrometeorological Organization — Region VI - Europe
+- key: meteoalarm-republic-of-north-macedonia
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-republic-of-north-macedonia
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Norway: Norges vassdrags- og energidirektorat — Region VI - Europe
+- key: no-alert-met
+  type: cap-atom
+  url: https://alert.met.no/feed?lang=en
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Oman: Directorate General of Meteorology — Region II - Asia
+- key: om-met-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/om-met-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Panama: IMHPA - Instituto de Meteorología e Hidrología de Panama — Region IV - North America, Central America and the Caribbean
+- key: pa-imhpa-es
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/pa-imhpa-es/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: es
+  enabled: true
+
+# Paraguay: Dirección de Meteorología e Hidrología — Region III - South America
+- key: py-dmh-es
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/py-dmh-es/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: es
+  enabled: true
+
+# Philippines: Philippine Atmospheric Geophysical and Astronomical Services Administration — Region V - South West Pacific
+- key: ph-pagasa
+  type: cap-atom
+  url: https://publicalert.pagasa.dost.gov.ph/feeds/
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Poland: Institute of Meteorology and Water Management — Region VI - Europe (To be updated)
+- key: meteoalarm-poland
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-poland
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Portugal: Instituto Português do Mar e da Atmosfera, I.P. — Region VI - Europe
+- key: meteoalarm-portugal
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-portugal
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Qatar: Civil Aviation Authority — Region II - Asia
+- key: qa-caa-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/qa-caa-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Republic of Korea: Korea Meteorological Administration, Weather Information — Region II - Asia
+- key: kr-weather-go
+  type: cap-atom
+  url: https://www.weather.go.kr/w/rss/cap/warning.do
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Republic of Moldova: State Hydrometeorological Service — Region VI - Europe (To be updated)
+- key: meteoalarm-moldova
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-moldova
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Romania: Administratiei Nationale de Meteorologie — Region VI - Europe
+- key: meteoalarm-romania
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-romania
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: ro
+  enabled: true
+
+# Russian Federation: Russian Federal Service for Hydrometeorology and Environmental Monitoring — Region II - Asia
+- key: ru-meteoinfo
+  type: cap-atom
+  url: https://meteoinfo.ru/hmc-output/cap/cap-feed/en/atom.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Saint Lucia: Saint Lucia Meteorological Services — Region IV - North America, Central America and the Caribbean
+- key: lc-saint-lucia-cap-composer
+  type: cap-atom
+  url: https://saint-lucia.cap-composer.wiscaribbeancmo.org/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Saint Vincent and the Grenadines: Meteorological Services — Region IV - North America, Central America and the Caribbean
+- key: vc-vct-primary-capews
+  type: cap-atom
+  url: https://vct-primary.capews.com/capews/public/atom?type=cap
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# São Tomé and Príncipe: Instituto Nacional de Meteorologia — Region I - Africa
+- key: st-meteo-pt
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/st-meteo-pt/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: st
+  enabled: true
+
+# Saudi Arabia: National Center for Meteorology — Region II - Asia
+- key: sa-ncm-gov
+  type: cap-atom
+  url: https://ncm.gov.sa/en/cap-alerts
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Senegal: Agence Nationale de l'Aviation Civile et de la Météorologie — Region I - Africa
+- key: sn-anacim-fr
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/sn-anacim-fr/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: fr
+  enabled: true
+
+# Serbia: Републички Хидрометеоролошки завод — Region VI - Europe
+- key: meteoalarm-serbia
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-serbia
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: sr
+  enabled: true
+
+# Seychelles: Seychelles Meteorological Authority — Region I - Africa
+- key: sc-meteo
+  type: cap-atom
+  url: https://www.meteo.sc/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Sierra Leone: Sierra Leone Meteorological Agency — Region I - Africa
+- key: sl-slmet-gov
+  type: cap-atom
+  url: https://slmet.gov.sl/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Singapore: PUB Singapore — Region V - South West Pacific
+- key: sg-weather-gov
+  type: cap-atom
+  url: https://www.weather.gov.sg/files/rss/rsscapalert/rsscapalert.xml
+  intervalSec: 60
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Slovakia: Slovenský hydrometeorologický ústav — Region VI - Europe
+- key: meteoalarm-slovakia
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-slovakia
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: sk
+  enabled: true
+
+# Slovenia: National Meteorological Service — Region VI - Europe
+- key: meteoalarm-slovenia
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-slovenia
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Solomon Islands: Meteorological Service — Region V - South West Pacific
+- key: sb-met-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/sb-met-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Somalia: Somalia National Meteorological Agency — Region I - Africa
+- key: so-meteosomalia
+  type: cap-atom
+  url: https://meteosomalia.so/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# South Africa: South Africa Weather Service — Region I - Africa
+- key: za-caps-weathersa-co
+  type: cap-atom
+  url: https://caps.weathersa.co.za/Home/RssFeed
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# South Sudan: South Sudan Meteorological Services — Region I - Africa
+- key: ss-meteosouthsudan-com
+  type: cap-atom
+  url: https://meteosouthsudan.com.ss/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Spain: Agencia Estatal de Meteorología — Region VI - Europe
+- key: es-aemet
+  type: cap-atom
+  url: https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/rss/CAP_AFAE_wah_RSS.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: es
+  enabled: true
+
+# Sri Lanka: Department of Meteorology — Region II - Asia
+- key: lk-was-meteo-gov
+  type: cap-atom
+  url: https://was.meteo.gov.lk/cap/en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Sudan: Sudan Meteorological Authority — Region I - Africa
+- key: sd-meteosudan
+  type: cap-atom
+  url: https://meteosudan.sd/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Suriname: Suriname Meteorological Service — Region III - South America (To be updated)
+- key: sr-meteo-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/sr-meteo-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: sr
+  enabled: true
+
+# Sweden: Sveriges meteorologiska och hydrologiska institut — Region VI - Europe (To be updated)
+- key: meteoalarm-sweden
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-sweden
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: sv
+  enabled: true
+
+# Switzerland: MeteoSwiss, Bundesamt für Meteorologie und Klimatologie — Region VI - Europe (To be updated)
+- key: meteoalarm-switzerland
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-switzerland
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: de
+  enabled: true
+
+# Syrian Arab Republic: Ministry of emergency and disaster management — Region VI - Europe
+- key: sy-climweb-med-gov
+  type: cap-atom
+  url: https://climweb.med.gov.sy/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: ar
+  enabled: true
+
+# Thailand: Thai Meteorological Department — Region II - Asia
+- key: th-tmd-go
+  type: cap-atom
+  url: https://www.tmd.go.th/en/api/xml/CAP
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Timor-Leste: National Directorate of Meteorology and Geophysics — Region V - South West Pacific
+- key: tl-ms-api-dnmg-gov
+  type: cap-atom
+  url: https://ms-api.dnmg.gov.tl/cap/feed/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Togo: Agence Nationale de la Météorologie du Togo — Region I - Africa
+- key: tg-meteotogo
+  type: cap-atom
+  url: https://meteotogo.tg/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Trinidad and Tobago: Trinidad and Tobago Meteorological Service — Region IV - North America, Central America and the Caribbean
+- key: tt-metproducts-gov
+  type: cap-atom
+  url: https://metproducts.gov.tt/ttms/public/api/feed?type=rss
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Tunisia: National Institute of Meteorology — Region I - Africa
+- key: tn-meteo-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/tn-meteo-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Turks and Caicos Islands: TCI Emergency Alerts — Region IV - North America, Central America and the Caribbean
+- key: tc-gov-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/tc-gov-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Tuvalu: Tuvalu Meteorological Service — Region V - South West Pacific
+- key: tv-tuvmet-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/tv-tuvmet-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Uganda: Department of Meteorology — Region I - Africa
+- key: ug-wids-mwe-go
+  type: cap-atom
+  url: https://wids.mwe.go.ug/api/v1/cap/feed
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Ukraine: Ukrainian Hydrometeorological Center — Region VI - Europe
+- key: meteoalarm-ukraine
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-ukraine
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# United Kingdom of Great Britain and Northern Ireland: Met Office — Region I - Africa
+- key: meteoalarm-united-kingdom
+  type: cap-atom
+  url: https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-united-kingdom
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# United Republic of Tanzania: Meteorological Agency — Region I - Africa
+- key: tz-tma-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/tz-tma-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# United States of America: National Oceanic and Atmospheric Administration (NOAA), National Weather Service (including Marine Zones) — Region IV - North America, Central America and the Caribbean
+- key: us-nws-land
+  type: cap-atom
+  url: https://api.weather.gov/alerts/active.atom?region_type=land
+  intervalSec: 60
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+- key: us-nws-marine
+  type: cap-atom
+  url: https://api.weather.gov/alerts/active.atom?region_type=marine
+  intervalSec: 60
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Uruguay: Institute of Meteorology — Region III - South America
+- key: uy-inumet-gub
+  type: cap-atom
+  url: https://www.inumet.gub.uy/reportes/riesgo/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: es
+  enabled: true
+
+# Uzbekistan: Uzhydromet — Region II - Asia
+- key: uz-meteoalert-meteoinfo
+  type: cap-atom
+  url: https://meteoalert.meteoinfo.ru/uzbekistan/cap-feed/en/atom.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Vanuatu: Vanuatu Meteorology and Geo-hazards Department — Region V - South West Pacific
+- key: vu-vmgd-en
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/vu-vmgd-en/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Viet Nam: National Center for Hydrometeorolgical Forecasting — Region II - Asia (To be updated)
+- key: vn-nchmf
+  type: cap-atom
+  url: https://smartalert.nchmf.gov.vn/smartalert/capfeed.php
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Yemen: دائرة الأرصاد الجوية اليمنية — Region II - Asia
+- key: ye-yms-ar
+  type: cap-atom
+  url: https://cap-sources.s3.amazonaws.com/ye-yms-ar/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: ar
+  enabled: true
+
+# Zambia: Zambia Meteorological Department — Region I - Africa
+- key: zm-zmd-gov
+  type: cap-atom
+  url: https://zmd.gov.zm/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# Zimbabwe: Meteorological Services Department — Region I - Africa
+- key: zw-weatherzw-org
+  type: cap-atom
+  url: https://www.weatherzw.org.zw/api/cap/rss.xml
+  intervalSec: 300
+  tier: A
+  license: terms-of-use
+  lang: en
+  enabled: true
+
+# --- Spec §3.1 aggregators / non-CAP (adapters not implemented) ---
+
+- key: wmo-alert-hub
+  type: cap-atom
+  url: https://cap-alerts.s3.amazonaws.com/official-public/rss.xml
+  intervalSec: 300
+  tier: C
+  license: public-domain
+  lang: en
+  enabled: false
+
+- key: wmo-swic
+  type: wmo-swic-directory
+  url: https://severeweather.wmo.int/json/sources.json
+  intervalSec: 300
+  tier: C
+  license: public-domain
+  lang: en
+  enabled: false
+
+- key: ifrc-alert-hub
+  type: ifrc-graphql
+  url: https://alerthub-api.ifrc.org/graphql/
+  intervalSec: 300
+  tier: C
+  license: terms-of-use
+  lang: en
+  enabled: false
+
+- key: gdacs
+  type: gdacs-rss
+  url: https://www.gdacs.org/xml/rss.xml
+  intervalSec: 300
+  tier: C
+  license: public-domain
+  lang: en
+  enabled: false
+
+- key: reliefweb
+  type: reliefweb-json
+  url: https://api.reliefweb.int/v2/reports
+  intervalSec: 900
+  tier: C
+  license: terms-of-use
+  lang: en
+  enabled: false
+
+- key: nasa-eonet
+  type: eonet-json
+  url: https://eonet.gsfc.nasa.gov/api/v3/events
+  intervalSec: 600
+  tier: C
+  license: public-domain
+  lang: en
+  enabled: false
+
+- key: copernicus-ems
+  type: copernicus-ems-json
+  url: https://mapping.emergency.copernicus.eu/activations/api/activations/?closed=false
+  intervalSec: 900
+  tier: C
+  license: terms-of-use
+  lang: en
+  enabled: false
+
+- key: usgs-eq
+  type: usgs-geojson
+  url: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_hour.geojson
+  intervalSec: 60
+  tier: B
+  license: public-domain
+  enabled: false

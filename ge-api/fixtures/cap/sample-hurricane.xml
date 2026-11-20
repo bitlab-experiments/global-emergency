@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>sample-hurricane-001</identifier>
+  <sender>ge-monitor.example</sender>
+  <sent>2024-08-15T18:30:00-04:00</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <scope>Public</scope>
+  <info>
+    <language>en-US</language>
+    <category>Met</category>
+    <event>Hurricane Warning</event>
+    <urgency>Immediate</urgency>
+    <severity>Extreme</severity>
+    <certainty>Observed</certainty>
+    <effective>2024-08-15T18:30:00-04:00</effective>
+    <expires>2024-08-16T18:30:00-04:00</expires>
+    <senderName>Example National Weather Service</senderName>
+    <headline>Hurricane Warning for the sample coast</headline>
+    <description>This is a fixture alert used to verify CAP ingest. It is not a real warning. High wind &amp; surge.</description>
+    <instruction>This fixture is for software testing only.</instruction>
+    <web>https://example.com/alerts/sample-hurricane-001</web>
+    <area>
+      <areaDesc>Sample Coast</areaDesc>
+      <polygon>25.0,-81.0 25.0,-80.0 26.0,-80.0 26.0,-81.0 25.0,-81.0</polygon>
+      <geocode>
+        <valueName>SAME</valueName>
+        <value>012087</value>
+      </geocode>
+    </area>
+    <area>
+      <areaDesc>Inland Counties</areaDesc>
+      <geocode>
+        <valueName>SAME</valueName>
+        <value>012086</value>
+      </geocode>
+    </area>
+  </info>
+</alert>

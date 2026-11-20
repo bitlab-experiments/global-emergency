@@ -1,0 +1,41 @@
+# Local Postgres + PostGIS and Redis for API, worker, and BullMQ.
+# Values come from a `.env` file next to this compose file (see `.env.example`).
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ge}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ge}
+      POSTGRES_DB: ${POSTGRES_DB:-ge}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - ge-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}",
+        ]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+
+  redis:
+    image: redis:8.10.3-alpine
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-ge}
+    command: redis-server --requirepass ${REDIS_PASSWORD:-ge} --appendonly yes
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - ge-redis:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a \"$${REDIS_PASSWORD}\" ping"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  ge-postgres:
+  ge-redis:

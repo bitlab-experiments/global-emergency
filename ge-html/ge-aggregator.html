@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Emergency — Alert Aggregator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <style>
+    :root {
+      --bg: #e8eef2;
+      --bg-deep: #d3dde6;
+      --surface: #f7fafc;
+      --ink: #1a2332;
+      --muted: #5a6b7d;
+      --line: #b8c5d1;
+      --brand: #0b4f6c;
+      --brand-soft: #c5e0eb;
+      --extreme: #b42318;
+      --severe: #c05600;
+      --moderate: #b7791f;
+      --minor: #2b6cb0;
+      --unknown: #718096;
+      --ok: #276749;
+      --warn: #c05600;
+      --err: #c53030;
+      --shadow: 0 10px 30px rgba(26, 35, 50, 0.08);
+      --radius: 10px;
+      --font: "Source Sans 3", "Segoe UI", sans-serif;
+      --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #cfe3ec 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #d9e4c9 0%, transparent 45%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      min-height: 100%;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem 0.55rem;
+    }
+
+    .brand {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: var(--brand);
+      margin: 0;
+    }
+
+    .brand span {
+      display: block;
+      font-size: 0.55em;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .toolbar label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    select, input[type="text"], button {
+      font: inherit;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      padding: 0.4rem 0.55rem;
+      min-height: 2.1rem;
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: 600;
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
+
+    button.ghost {
+      background: var(--surface);
+      color: var(--brand);
+    }
+
+    button:disabled { opacity: 0.55; cursor: wait; }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .status-pill .dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      background: var(--warn);
+    }
+
+    .status-pill.live .dot { background: var(--ok); }
+    .status-pill.down .dot { background: var(--err); }
+
+    .disclaimer {
+      margin: 0 1.25rem 0.75rem;
+      padding: 0.65rem 0.9rem;
+      border-left: 4px solid var(--severe);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      font-size: 0.92rem;
+      box-shadow: var(--shadow);
+    }
+
+    .view-toggle {
+      display: none;
+      gap: 0.4rem;
+      padding: 0 1.25rem 0.6rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(320px, 1.05fr) minmax(280px, 1fr);
+      gap: 0.85rem;
+      padding: 0 1.25rem 1rem;
+      min-height: 0;
+    }
+
+    .board, .map-panel {
+      background: rgba(247, 250, 252, 0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .board {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .board-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .board-head h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .count { color: var(--muted); font-size: 0.9rem; }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap: 0.55rem;
+      padding: 0.7rem;
+      overflow: auto;
+      flex: 1;
+    }
+
+    .column {
+      min-width: 0;
+      background: rgba(232, 238, 242, 0.55);
+      border-radius: 8px;
+      border: 1px solid rgba(184, 197, 209, 0.7);
+      display: flex;
+      flex-direction: column;
+      max-height: 100%;
+    }
+
+    .column h3 {
+      margin: 0;
+      padding: 0.45rem 0.55rem;
+      font-family: var(--display);
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 3px solid currentColor;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .column[data-sev="Extreme"] { color: var(--extreme); }
+    .column[data-sev="Severe"] { color: var(--severe); }
+    .column[data-sev="Moderate"] { color: var(--moderate); }
+    .column[data-sev="Minor"],
+    .column[data-sev="Unknown"] { color: var(--minor); }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      padding: 0.45rem;
+      overflow: auto;
+      flex: 1;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 0.55rem 0.6rem 0.55rem 0.75rem;
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.35s ease;
+      box-shadow: 0 1px 0 rgba(26, 35, 50, 0.04);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      border-radius: 8px 0 0 8px;
+      background: currentColor;
+    }
+
+    .card[data-sev="Extreme"] { color: var(--extreme); }
+    .card[data-sev="Severe"] { color: var(--severe); }
+    .card[data-sev="Moderate"] { color: var(--moderate); }
+    .card[data-sev="Minor"],
+    .card[data-sev="Unknown"] { color: var(--minor); }
+
+    .card:hover, .card:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(26, 35, 50, 0.12);
+      outline: none;
+    }
+
+    .card.selected {
+      box-shadow: 0 0 0 2px var(--brand), var(--shadow);
+    }
+
+    .card.flash {
+      animation: flash 1.1s ease;
+    }
+
+    .card.leaving {
+      opacity: 0.35;
+      text-decoration: line-through;
+    }
+
+    @keyframes flash {
+      0%, 100% { background: #fff; }
+      30% { background: #fff4d6; }
+    }
+
+    .card .event {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin: 0 0 0.15rem;
+    }
+
+    .card .headline {
+      margin: 0 0 0.35rem;
+      color: var(--ink);
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.45rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.05rem 0.35rem;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .empty {
+      padding: 0.75rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .map-panel {
+      position: relative;
+      min-height: 420px;
+    }
+
+    #map {
+      position: absolute;
+      inset: 0;
+    }
+
+    .map-legend {
+      position: absolute;
+      z-index: 2;
+      left: 0.7rem;
+      bottom: 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      padding: 0.4rem 0.5rem;
+      background: rgba(247, 250, 252, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 0.75rem;
+    }
+
+    .map-legend i {
+      display: inline-block;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 2px;
+      margin-right: 0.25rem;
+      vertical-align: -0.1rem;
+    }
+
+    footer {
+      padding: 0.4rem 1.25rem 0.8rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    footer code {
+      font-size: 0.85em;
+      background: rgba(255,255,255,0.7);
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 960px) {
+      main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+      }
+      .view-toggle { display: flex; }
+      main.board-only .map-panel { display: none; }
+      main.map-only .board { display: none; }
+      .columns { grid-template-columns: 1fr 1fr; }
+      .map-panel { min-height: 55vh; }
+    }
+
+    @media (max-width: 640px) {
+      .columns { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="brand">
+      Global Emergency
+      <span>Alert aggregator · unofficial</span>
+    </h1>
+    <div class="toolbar">
+      <label>
+        API base
+        <input id="apiBase" type="text" size="28" spellcheck="false" />
+      </label>
+      <label>
+        Severity
+        <select id="filterSeverity">
+          <option value="">All</option>
+          <option>Extreme</option>
+          <option>Severe</option>
+          <option>Moderate</option>
+          <option>Minor</option>
+          <option>Unknown</option>
+        </select>
+      </label>
+      <label>
+        Category
+        <select id="filterCategory">
+          <option value="">All</option>
+          <option>Geo</option>
+          <option>Met</option>
+          <option>Safety</option>
+          <option>Security</option>
+          <option>Rescue</option>
+          <option>Fire</option>
+          <option>Health</option>
+          <option>Env</option>
+          <option>Transport</option>
+          <option>Infra</option>
+          <option>CBRNE</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>
+        Source
+        <select id="filterSource">
+          <option value="">All</option>
+        </select>
+      </label>
+      <button type="button" id="btnReload" class="ghost">Reload</button>
+      <span id="connStatus" class="status-pill" title="SSE connection">
+        <span class="dot"></span>
+        <span class="label">Connecting…</span>
+      </span>
+    </div>
+  </header>
+
+  <p class="disclaimer" id="disclaimer">
+    This is an aggregator, not an official warning system. Do not use it as your only source for life-safety decisions.
+  </p>
+
+  <div class="view-toggle">
+    <button type="button" data-view="board" class="ghost">Board</button>
+    <button type="button" data-view="map" class="ghost">Map</button>
+  </div>
+
+  <main id="main">
+    <section class="board" aria-label="Alert board">
+      <div class="board-head">
+        <h2>Active alerts</h2>
+        <div class="count"><span id="visibleCount">0</span> shown · <span id="totalCount">0</span> loaded</div>
+      </div>
+      <div class="columns" id="columns"></div>
+    </section>
+    <section class="map-panel" aria-label="Alert map">
+      <div id="map" role="presentation"></div>
+      <div class="map-legend" aria-hidden="true">
+        <span><i style="background:#b42318"></i>Extreme</span>
+        <span><i style="background:#c05600"></i>Severe</span>
+        <span><i style="background:#b7791f"></i>Moderate</span>
+        <span><i style="background:#2b6cb0"></i>Minor</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Single-file client · open with <code>?api=http://localhost:3000</code> · MapLibre + OpenFreeMap
+  </footer>
+
+  <script>
+(function () {
+  const SEVERITIES = ["Extreme", "Severe", "Moderate", "Minor", "Unknown"];
+  const SEVERITY_COLOR = {
+    Extreme: "#b42318",
+    Severe: "#c05600",
+    Moderate: "#b7791f",
+    Minor: "#2b6cb0",
+    Unknown: "#718096",
+  };
+
+  const params = new URLSearchParams(location.search);
+  const defaultApi = params.get("api") || "http://localhost:3000";
+
+  const els = {
+    apiBase: document.getElementById("apiBase"),
+    filterSeverity: document.getElementById("filterSeverity"),
+    filterCategory: document.getElementById("filterCategory"),
+    filterSource: document.getElementById("filterSource"),
+    btnReload: document.getElementById("btnReload"),
+    connStatus: document.getElementById("connStatus"),
+    disclaimer: document.getElementById("disclaimer"),
+    columns: document.getElementById("columns"),
+    visibleCount: document.getElementById("visibleCount"),
+    totalCount: document.getElementById("totalCount"),
+    main: document.getElementById("main"),
+  };
+
+  els.apiBase.value = defaultApi.replace(/\/$/, "");
+
+  /** @type {Map<string, any>} */
+  const alertsById = new Map();
+  let selectedId = null;
+  /** @type {EventSource | null} */
+  let eventSource = null;
+  let map;
+  let mapReady = false;
+  let countdownTimer = null;
+
+  function apiBase() {
+    return els.apiBase.value.replace(/\/$/, "") || defaultApi;
+  }
+
+  function setConn(state, label) {
+    els.connStatus.classList.remove("live", "down");
+    if (state) els.connStatus.classList.add(state);
+    els.connStatus.querySelector(".label").textContent = label;
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function formatWhen(value) {
+    if (!value) return "—";
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return String(value);
+    return d.toLocaleString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
+  function expiryLabel(alert) {
+    if (!alert.expires) return "no expiry";
+    const end = new Date(alert.expires).getTime();
+    if (Number.isNaN(end)) return "no expiry";
+    const ms = end - Date.now();
+    if (ms <= 0) return "expired";
+    const mins = Math.floor(ms / 60000);
+    if (mins < 60) return mins + "m left";
+    const hours = Math.floor(mins / 60);
+    if (hours < 48) return hours + "h left";
+    return Math.floor(hours / 24) + "d left";
+  }
+
+  function areaNames(alert) {
+    const names = (alert.areas || []).map((a) => a.name).filter(Boolean);
+    return names.length ? names.slice(0, 3).join(", ") + (names.length > 3 ? "…" : "") : "No area name";
+  }
+
+  function isActive(alert) {
+    return !alert.status || alert.status === "active";
+  }
+
+  function filters() {
+    return {
+      severity: els.filterSeverity.value,
+      category: els.filterCategory.value,
+      source: els.filterSource.value,
+    };
+  }
+
+  function passesFilters(alert) {
+    const f = filters();
+    if (f.severity && alert.severity !== f.severity) return false;
+    if (f.category && alert.category !== f.category) return false;
+    if (f.source && alert.source !== f.source) return false;
+    return true;
+  }
+
+  function visibleAlerts() {
+    return [...alertsById.values()]
+      .filter(isActive)
+      .filter(passesFilters)
+      .sort((a, b) => {
+        const ua = a.urgency === "Immediate" ? 0 : 1;
+        const ub = b.urgency === "Immediate" ? 0 : 1;
+        if (ua !== ub) return ua - ub;
+        return new Date(b.sent) - new Date(a.sent);
+      });
+  }
+
+  function rebuildSourceFilter() {
+    const current = els.filterSource.value;
+    const sources = [...new Set([...alertsById.values()].map((a) => a.source))].sort();
+    els.filterSource.innerHTML = '<option value="">All</option>' +
+      sources.map((s) => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join("");
+    if (sources.includes(current)) els.filterSource.value = current;
+  }
+
+  function renderBoard() {
+    const list = visibleAlerts();
+    els.totalCount.textContent = String([...alertsById.values()].filter(isActive).length);
+    els.visibleCount.textContent = String(list.length);
+
+    const bySev = Object.fromEntries(SEVERITIES.map((s) => [s, []]));
+    for (const alert of list) {
+      const key = SEVERITIES.includes(alert.severity) ? alert.severity : "Unknown";
+      bySev[key].push(alert);
+    }
+
+    els.columns.innerHTML = SEVERITIES.filter((s) => s !== "Unknown" || bySev.Unknown.length)
+      .map((sev) => {
+        const cards = bySev[sev];
+        const body = cards.length
+          ? cards.map(cardHtml).join("")
+          : '<div class="empty">None</div>';
+        return `
+          <div class="column" data-sev="${sev}">
+            <h3>${sev} (${cards.length})</h3>
+            <div class="cards">${body}</div>
+          </div>`;
+      })
+      .join("");
+
+    els.columns.querySelectorAll(".card").forEach((node) => {
+      node.addEventListener("click", () => selectAlert(node.dataset.id, true));
+    });
+  }
+
+  function cardHtml(alert) {
+    const selected = alert.id === selectedId ? " selected" : "";
+    return `
+      <article class="card${selected}" data-id="${escapeHtml(alert.id)}" data-sev="${escapeHtml(alert.severity || "Unknown")}" tabindex="0">
+        <p class="event">${escapeHtml(alert.event || "Alert")}</p>
+        <p class="headline">${escapeHtml(alert.headline || "No headline")}</p>
+        <div class="meta">
+          <span class="badge">Tier ${escapeHtml(alert.tier || "?")}</span>
+          <span>${escapeHtml(alert.source)}</span>
+          <span>${escapeHtml(alert.category || "")}</span>
+          <span>${escapeHtml(areaNames(alert))}</span>
+          <span>sent ${escapeHtml(formatWhen(alert.sent))}</span>
+          <span data-expiry-for="${escapeHtml(alert.id)}">${escapeHtml(expiryLabel(alert))}</span>
+        </div>
+      </article>`;
+  }
+
+  function refreshExpiries() {
+    document.querySelectorAll("[data-expiry-for]").forEach((node) => {
+      const alert = alertsById.get(node.getAttribute("data-expiry-for"));
+      if (alert) node.textContent = expiryLabel(alert);
+    });
+  }
+
+  function alertsToGeoJSON(list) {
+    const features = [];
+    for (const alert of list) {
+      const areas = alert.areas || [];
+      let drew = false;
+      for (let i = 0; i < areas.length; i++) {
+        const geom = areas[i].geometry;
+        if (!geom || !geom.type) continue;
+        features.push({
+          type: "Feature",
+          id: alert.id + "::" + i,
+          properties: {
+            alertId: alert.id,
+            severity: alert.severity || "Unknown",
+            event: alert.event || "",
+            headline: alert.headline || "",
+            source: alert.source || "",
+          },
+          geometry: geom,
+        });
+        drew = true;
+      }
+      if (!drew) {
+        // Placeholder point so alerts without polygons still appear in sync logic
+        // (skipped on map — no coords). Intentionally omit.
+      }
+    }
+    return { type: "FeatureCollection", features };
+  }
+
+  function ensureMapLayers() {
+    if (!map.getSource("alerts")) {
+      map.addSource("alerts", {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
+      map.addLayer({
+        id: "alerts-fill",
+        type: "fill",
+        source: "alerts",
+        filter: ["==", ["geometry-type"], "Polygon"],
+        paint: {
+          "fill-color": [
+            "match", ["get", "severity"],
+            "Extreme", SEVERITY_COLOR.Extreme,
+            "Severe", SEVERITY_COLOR.Severe,
+            "Moderate", SEVERITY_COLOR.Moderate,
+            "Minor", SEVERITY_COLOR.Minor,
+            SEVERITY_COLOR.Unknown,
+          ],
+          "fill-opacity": 0.35,
+        },
+      });
+      map.addLayer({
+        id: "alerts-line",
+        type: "line",
+        source: "alerts",
+        filter: ["any",
+          ["==", ["geometry-type"], "Polygon"],
+          ["==", ["geometry-type"], "MultiPolygon"],
+          ["==", ["geometry-type"], "LineString"],
+        ],
+        paint: {
+          "line-color": [
+            "match", ["get", "severity"],
+            "Extreme", SEVERITY_COLOR.Extreme,
+            "Severe", SEVERITY_COLOR.Severe,
+            "Moderate", SEVERITY_COLOR.Moderate,
+            "Minor", SEVERITY_COLOR.Minor,
+            SEVERITY_COLOR.Unknown,
+          ],
+          "line-width": [
+            "case",
+            ["==", ["get", "alertId"], selectedId || ""],
+            3.5,
+            1.5,
+          ],
+        },
+      });
+      map.addLayer({
+        id: "alerts-fill-multi",
+        type: "fill",
+        source: "alerts",
+        filter: ["==", ["geometry-type"], "MultiPolygon"],
+        paint: {
+          "fill-color": [
+            "match", ["get", "severity"],
+            "Extreme", SEVERITY_COLOR.Extreme,
+            "Severe", SEVERITY_COLOR.Severe,
+            "Moderate", SEVERITY_COLOR.Moderate,
+            "Minor", SEVERITY_COLOR.Minor,
+            SEVERITY_COLOR.Unknown,
+          ],
+          "fill-opacity": 0.35,
+        },
+      });
+      map.addLayer({
+        id: "alerts-point",
+        type: "circle",
+        source: "alerts",
+        filter: ["==", ["geometry-type"], "Point"],
+        paint: {
+          "circle-radius": 7,
+          "circle-color": [
+            "match", ["get", "severity"],
+            "Extreme", SEVERITY_COLOR.Extreme,
+            "Severe", SEVERITY_COLOR.Severe,
+            "Moderate", SEVERITY_COLOR.Moderate,
+            "Minor", SEVERITY_COLOR.Minor,
+            SEVERITY_COLOR.Unknown,
+          ],
+          "circle-stroke-width": 1.5,
+          "circle-stroke-color": "#fff",
+        },
+      });
+
+      const pick = (e) => {
+        const f = e.features && e.features[0];
+        if (f && f.properties && f.properties.alertId) {
+          selectAlert(f.properties.alertId, false);
+        }
+      };
+      ["alerts-fill", "alerts-fill-multi", "alerts-line", "alerts-point"].forEach((id) => {
+        map.on("click", id, pick);
+        map.on("mouseenter", id, () => { map.getCanvas().style.cursor = "pointer"; });
+        map.on("mouseleave", id, () => { map.getCanvas().style.cursor = ""; });
+      });
+    }
+  }
+
+  function syncMap() {
+    if (!mapReady) return;
+    ensureMapLayers();
+    const data = alertsToGeoJSON(visibleAlerts());
+    map.getSource("alerts").setData(data);
+    if (map.getLayer("alerts-line")) {
+      map.setPaintProperty("alerts-line", "line-width", [
+        "case",
+        ["==", ["get", "alertId"], selectedId || ""],
+        3.5,
+        1.5,
+      ]);
+    }
+  }
+
+  function fitToAlert(alert) {
+    if (!mapReady || !alert) return;
+    const bounds = new maplibregl.LngLatBounds();
+    let has = false;
+    for (const area of alert.areas || []) {
+      const g = area.geometry;
+      if (!g) continue;
+      const coords = [];
+      const walk = (c) => {
+        if (typeof c[0] === "number" && typeof c[1] === "number") coords.push(c);
+        else if (Array.isArray(c)) c.forEach(walk);
+      };
+      walk(g.coordinates);
+      coords.forEach((c) => {
+        bounds.extend([c[0], c[1]]);
+        has = true;
+      });
+    }
+    if (has) {
+      map.fitBounds(bounds, { padding: 48, maxZoom: 8, duration: 700 });
+    }
+  }
+
+  function selectAlert(id, fromBoard) {
+    selectedId = id;
+    document.querySelectorAll(".card").forEach((n) => {
+      n.classList.toggle("selected", n.dataset.id === id);
+    });
+    const alert = alertsById.get(id);
+    if (fromBoard && alert) fitToAlert(alert);
+    if (!fromBoard) {
+      const card = document.querySelector('.card[data-id="' + CSS.escape(id) + '"]');
+      if (card) card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    syncMap();
+  }
+
+  function upsertAlerts(list, { flashIds } = {}) {
+    const flash = new Set(flashIds || []);
+    for (const alert of list || []) {
+      if (!alert || !alert.id) continue;
+      if (alert.status && alert.status !== "active") {
+        const existing = alertsById.get(alert.id);
+        if (existing) {
+          const card = document.querySelector('.card[data-id="' + CSS.escape(alert.id) + '"]');
+          if (card) card.classList.add("leaving");
+          setTimeout(() => {
+            alertsById.delete(alert.id);
+            rebuildSourceFilter();
+            renderBoard();
+            syncMap();
+          }, 900);
+        }
+        // Also drop any referenced-as-cancelled siblings already reflected via status on payload
+        continue;
+      }
+      alertsById.set(alert.id, alert);
+      flash.add(alert.id);
+    }
+    // Drop superseded/cancelled targets if payload includes references + Update/Cancel
+    for (const alert of list || []) {
+      if (!alert) continue;
+      if (alert.msgType === "Update" || alert.msgType === "Cancel") {
+        for (const ref of alert.references || []) {
+          if (!alertsById.has(ref)) continue;
+          const card = document.querySelector('.card[data-id="' + CSS.escape(ref) + '"]');
+          if (card) card.classList.add("leaving");
+          setTimeout(() => {
+            alertsById.delete(ref);
+            rebuildSourceFilter();
+            renderBoard();
+            syncMap();
+          }, 900);
+        }
+      }
+    }
+    rebuildSourceFilter();
+    renderBoard();
+    syncMap();
+    flash.forEach((id) => {
+      const card = document.querySelector('.card[data-id="' + CSS.escape(id) + '"]');
+      if (card) {
+        card.classList.remove("flash");
+        void card.offsetWidth;
+        card.classList.add("flash");
+      }
+    });
+  }
+
+  async function loadAlerts() {
+    els.btnReload.disabled = true;
+    try {
+      const url = apiBase() + "/alerts?limit=200&status=active";
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const body = await res.json();
+      if (body.disclaimer) els.disclaimer.textContent = body.disclaimer;
+      alertsById.clear();
+      for (const alert of body.data || []) {
+        if (isActive(alert)) alertsById.set(alert.id, alert);
+      }
+      rebuildSourceFilter();
+      renderBoard();
+      syncMap();
+    } catch (err) {
+      console.error(err);
+      setConn("down", "API error");
+      alert("Failed to load alerts from " + apiBase() + "\n" + err.message);
+    } finally {
+      els.btnReload.disabled = false;
+    }
+  }
+
+  function connectStream() {
+    if (eventSource) {
+      eventSource.close();
+      eventSource = null;
+    }
+    setConn("", "Connecting…");
+    const url = apiBase() + "/stream";
+    eventSource = new EventSource(url);
+    eventSource.onopen = () => setConn("live", "Live");
+    eventSource.onerror = () => {
+      setConn("down", "Reconnecting…");
+    };
+    eventSource.onmessage = (ev) => {
+      try {
+        let payload = JSON.parse(ev.data);
+        // Nest may double-encode objects in some setups
+        if (typeof payload === "string") payload = JSON.parse(payload);
+        const list = Array.isArray(payload)
+          ? payload
+          : payload && Array.isArray(payload.alerts)
+            ? payload.alerts
+            : payload
+              ? [payload]
+              : [];
+        upsertAlerts(list);
+      } catch (err) {
+        console.error("SSE parse error", err, ev.data);
+      }
+    };
+  }
+
+  function initMap() {
+    map = new maplibregl.Map({
+      container: "map",
+      style: "https://tiles.openfreemap.org/styles/liberty",
+      center: [10, 20],
+      zoom: 1.4,
+      attributionControl: true,
+    });
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    map.on("load", () => {
+      mapReady = true;
+      syncMap();
+    });
+  }
+
+  // Mobile view toggle
+  document.querySelectorAll(".view-toggle button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const view = btn.dataset.view;
+      els.main.classList.toggle("board-only", view === "board");
+      els.main.classList.toggle("map-only", view === "map");
+      if (view === "map" && map) map.resize();
+    });
+  });
+
+  els.filterSeverity.addEventListener("change", () => { renderBoard(); syncMap(); });
+  els.filterCategory.addEventListener("change", () => { renderBoard(); syncMap(); });
+  els.filterSource.addEventListener("change", () => { renderBoard(); syncMap(); });
+  els.btnReload.addEventListener("click", () => {
+    loadAlerts();
+    connectStream();
+  });
+  els.apiBase.addEventListener("change", () => {
+    loadAlerts();
+    connectStream();
+  });
+
+  SEVERITIES.filter((s) => s !== "Unknown").forEach(() => {});
+  // seed empty columns
+  renderBoard();
+  initMap();
+  loadAlerts();
+  connectStream();
+  countdownTimer = setInterval(refreshExpiries, 30000);
+})();
+  </script>
+</body>
+</html>
